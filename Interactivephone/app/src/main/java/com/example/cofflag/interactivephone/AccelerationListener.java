@@ -37,15 +37,16 @@ public class AccelerationListener implements SensorEventListener{
         double f = Math.sqrt(x*x+y*y+z*z);
         Log.d("#jacob","X: "+x+" Y: "+y+" Z: "+z + " ||V||: " + f);
         boolean falling = (-1 < f && f < 1);
-        boolean playing = mediaplayer.isPlaying();
-        boolean atZero = mediaplayer.getCurrentPosition() == 0;
+        boolean scared = falling || MainActivity.spinningFast;
         if(mediaplayer == null) {
             mediaplayer = MediaPlayer.create(con, R.raw.r2d2_scream);
         }
-        if(falling && !playing) {
+        boolean playing = mediaplayer.isPlaying();
+        boolean atZero = mediaplayer.getCurrentPosition() == 0;
+        if(scared && !playing) {
             mediaplayer.start();
         }
-        else if(!falling && playing) {
+        else if(!scared && playing) {
             mediaplayer.stop();
             mediaplayer.release();
             mediaplayer = null;
@@ -85,4 +86,4 @@ public class AccelerationListener implements SensorEventListener{
                 }
 
             }
-        }*/ 
+        }*/
