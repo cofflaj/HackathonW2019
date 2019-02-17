@@ -37,7 +37,22 @@ public class AccelerationListener implements SensorEventListener{
         boolean falling = (-1 < f && f < 1);
         boolean playing = mediaplayer.isPlaying();
         boolean atZero = mediaplayer.getCurrentPosition() == 0;
-        if(playing) {
+        if(mediaplayer == null) {
+            mediaplayer = MediaPlayer.create(c, R.raw.r2d2_scream);
+        }
+        if(falling && !playing) {
+            mediaplayer.start();
+        }
+        else if(!falling && playing) {
+            mediaplayer.stop();
+            mediaplayer.release();
+            mediaplayer = null;
+        }
+
+    }
+}
+
+/*if(playing) {
             if(falling) {
                 // good job!
             }
@@ -68,26 +83,4 @@ public class AccelerationListener implements SensorEventListener{
                 }
 
             }
-        }
-
-    }
-}
-/*if(f < 1 && f > -1){
-        if(!screaming) {
-        mediaplayer.start();
-        screaming = true;
-        try {
-        TimeUnit.SECONDS.sleep(1);
-        } catch (Exception e) {
-
-        }
-        Log.d("SCREAM", "SCREAM");
-        }
-        }
-        else if (screaming) {
-        if(mediaplayer.isPlaying()){
-        mediaplayer.pause();
-        }
-        mediaplayer.seekTo(0);
-        screaming = false;
         }*/
