@@ -20,7 +20,7 @@ public class SpinListener implements SensorEventListener {
         float y = event.values[1];
         float z = event.values[2];
         double f = Math.sqrt(x*x+y*y+z*z);
-        boolean spinningFastEnough = f > 8;
+        boolean spinningFastEnough = f > 10;
         MainActivity.spinningFast = spinningFastEnough;
     }
 
