@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Interactive phone</string>
+    <string name="scared_text">I was so scared</string>
+    <string name="dont_drop">Dont drop me!</string>
 </resources>

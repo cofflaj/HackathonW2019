@@ -6,6 +6,7 @@ import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Sensor sens = mansens.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         Sensor spinsens = mansens.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
         Context c = getApplicationContext();
-        AccelerationListener l = new AccelerationListener(c);
+        AccelerationListener l = new AccelerationListener(c, this);
         SpinListener s = new SpinListener();
         mansens.registerListener(l,sens,1);
         mansens.registerListener(s,spinsens,1);

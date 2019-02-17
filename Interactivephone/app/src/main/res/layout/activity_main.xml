@@ -10,7 +10,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:text="Dont drop me!"
+        android:hint="@string/dont_drop"
+        android:id="@+id/drop_text"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
