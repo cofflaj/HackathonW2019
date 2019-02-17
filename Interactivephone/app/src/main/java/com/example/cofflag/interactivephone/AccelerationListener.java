@@ -20,6 +20,7 @@ public class AccelerationListener implements SensorEventListener{
     private MainActivity ma;
     private boolean screaming;
     private Context con;
+    private static long sTime = 0;
 
     public AccelerationListener(Context c, MainActivity a){
         mediaplayer = MediaPlayer.create(c, R.raw.r2d2_scream);
@@ -38,7 +39,6 @@ public class AccelerationListener implements SensorEventListener{
         float x = event.values[0];
         float y = event.values[1];
         float z = event.values[2];
-        long sTime = 0;
         double f = Math.sqrt(x*x+y*y+z*z);
         Log.d("#jacob","X: "+x+" Y: "+y+" Z: "+z + " ||V||: " + f);
         boolean falling = (-1 < f && f < 1);
@@ -57,11 +57,12 @@ public class AccelerationListener implements SensorEventListener{
             mediaplayer.stop();
             mediaplayer.release();
             mediaplayer = null;
-            //long eTime = System.currentTimeMillis();
-            //long timeElapsed = eTime - sTime;
-            //TextView dropText = (TextView) ma.findViewById(R.id.drop_text);
-            //String fillDropText = String.format("I was scared for %.1f seconds :(", timeElapsed);
-            //dropText.setText(fillDropText);
+            long eTime = System.currentTimeMillis();
+            long timeElapsed = eTime - sTime;
+            float num = (float)timeElapsed/1000;
+            TextView dropText = (TextView) ma.findViewById(R.id.drop_text);
+            String fillDropText = String.format("I was scared for\n%.3f\nseconds :(", num);
+            dropText.setText(fillDropText);
         }
 
     }

@@ -8,10 +8,11 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:hint="@string/dont_drop"
         android:id="@+id/drop_text"
+        android:layout_width="wrap_content"
+        android:layout_height="192dp"
+        android:hint="@string/dont_drop"
+        android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
