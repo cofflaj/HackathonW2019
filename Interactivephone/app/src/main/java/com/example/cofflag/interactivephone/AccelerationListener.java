@@ -17,9 +17,11 @@ import java.util.concurrent.TimeUnit;
 public class AccelerationListener implements SensorEventListener{
     private MediaPlayer mediaplayer;
     private boolean screaming;
+    private Context con;
 
     public AccelerationListener(Context c){
         mediaplayer = MediaPlayer.create(c, R.raw.r2d2_scream);
+        con = c;
         screaming = false;
     }
 
@@ -38,7 +40,7 @@ public class AccelerationListener implements SensorEventListener{
         boolean playing = mediaplayer.isPlaying();
         boolean atZero = mediaplayer.getCurrentPosition() == 0;
         if(mediaplayer == null) {
-            mediaplayer = MediaPlayer.create(c, R.raw.r2d2_scream);
+            mediaplayer = MediaPlayer.create(con, R.raw.r2d2_scream);
         }
         if(falling && !playing) {
             mediaplayer.start();
@@ -83,4 +85,4 @@ public class AccelerationListener implements SensorEventListener{
                 }
 
             }
-        }*/
+        }*/ 
